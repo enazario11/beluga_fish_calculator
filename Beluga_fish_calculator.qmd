@@ -1,0 +1,85 @@
+---
+title: "Beluga fish calculator"
+filters:
+  - shinylive
+theme: yeti
+fontcolor: "#134f5c"
+---
+
+## Calculating the number of fish for a beluga
+
+On this page you will find a way to test out the number of fish a beluga whale of a given mass would need to sustain its field metabolic rate. You are also able to modify the calories of the fish according to your preferred species. We have provided a table here of the most common species and their caloric densities.
+
+```{r}
+#insert table of fish here
+```
+
+Here is the equation used in the fish calculator below to calculate the number of fish a beluga whale would need given the mass and average calories of the fish determined by the user.
+
+```{r}
+#insert equation used here
+```
+
+Lastly, feel free to modify the equation here to see how the number of fish changes as the mass of the whale and calories of the fish change. The default values observed here are the average mass of an adult beluga and the average calories of a Chinook salmon.
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 300
+
+library(shiny)
+library(bslib)
+
+theme <- bs_theme(font_scale = 1.5)
+
+# Define UI for app that draws a histogram ----
+ui <- fluidPage(
+  
+  
+  titlePanel("Beluga fish calculator"),
+  
+  
+  sidebarLayout(
+    sidebarPanel(
+      numericInput(
+        inputId = "mass",
+        label = "Beluga mass (kg)",
+        value = 500,
+        min = NA,
+        max = NA,
+        step = NA,
+        width = NULL
+      ),
+      numericInput(
+        inputId = "f_cal",
+        label = "Calories of given fish (J/kg) ",
+        value = 46,
+        min = NA,
+        max = NA,
+        step = NA,
+        width = NULL
+      ),
+    ),
+    
+    mainPanel(h2("Number of fish given inputs:"),
+              textOutput("result")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  
+  output$result <- renderText({
+    as.character(
+      input$mass * input$f_cal * 6.42
+    )
+  })
+  
+  
+  
+}
+
+# Create Shiny app ----
+shinyApp(ui = ui, server = server)
+
+```
+
