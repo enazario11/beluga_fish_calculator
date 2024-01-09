@@ -1,0 +1,13 @@
+---
+title: "index"
+format: html
+editor: visual
+theme: yeti
+fontcolor: "#134f5c"
+---
+
+# Home page for beluga fish calculator 
+
+## This calculator was developed to support the John et al., 2023 manuscript \[insert article link\]
+
+## To find the calculator, [follow this page here](Beluga_fish_calculator.html)
