@@ -1,30 +1,34 @@
 ---
 title: "Beluga fish calculator"
+author: "Emily Nazario"
 filters:
   - shinylive
 theme: yeti
 fontcolor: "#134f5c"
+bibliography: references.bib
 ---
 
-## Calculating the number of fish for a beluga
+On this page you will find a way to test out the number of fish a beluga whale of a given mass would need to sustain its field metabolic rate. You are also able to modify the calories of the fish according to your preferred species. We have provided a table here of the most common species and their caloric densities. These averages were described by [@neill2014energy] [which can be found here.](https://www.int-res.com/abstracts/esr/v25/n3/p265-281/).
 
-On this page you will find a way to test out the number of fish a beluga whale of a given mass would need to sustain its field metabolic rate. You are also able to modify the calories of the fish according to your preferred species. We have provided a table here of the most common species and their caloric densities.
+|  Fish species                             |  kcal/fish                                    |
+|-------------------------------------------|-----------------------------------------------|
+| Chinook                                   | 13409                                         |
+| Sockeye                                   | 4264                                          |
+| Pink                                      | 2101                                          |
+| Coho                                      | 4982                                          |
+| Chum                                      | 4265                                          |
 
-```{r}
-#insert table of fish here
-```
+Here is the equation used in the fish calculator below to calculate the number of fish of a given caloric density a beluga whale of a given mass would need per day. The beluga whale mass and fish caloric density can be modified below.
 
-Here is the equation used in the fish calculator below to calculate the number of fish a beluga whale would need given the mass and average calories of the fish determined by the user.
+$$
+\texttt{Number of fish per day} = \frac{600*\text{beluga mass}^{0.87}}{\text{kcal*fish}^{-1}}
+$$
 
-```{r}
-#insert equation used here
-```
-
-Lastly, feel free to modify the equation here to see how the number of fish changes as the mass of the whale and calories of the fish change. The default values observed here are the average mass of an adult beluga and the average calories of a Chinook salmon.
+Lastly, you can modify the equation here to see how the number of fish needed per day changes as the mass of the whale and calories of the fish change. The default values observed here are the average mass of an adult female beluga and the average calories in a Chinook salmon as described by [@neill2014energy]. Female beluga whales can weigh between 680 to 1179kg and males can be found between 1088 to 1587kg. You are welcome to test different beluga whale masses here as well.
 
 ```{shinylive-r}
 #| standalone: true
-#| viewerHeight: 300
+#| viewerHeight: 400
 
 library(shiny)
 library(bslib)
@@ -34,34 +38,36 @@ theme <- bs_theme(font_scale = 1.5)
 # Define UI for app that draws a histogram ----
 ui <- fluidPage(
   
-  
   titlePanel("Beluga fish calculator"),
-  
   
   sidebarLayout(
     sidebarPanel(
-      numericInput(
+      tags$style('#mass {font-size:18px;}'),
+      span(numericInput(
         inputId = "mass",
         label = "Beluga mass (kg)",
-        value = 500,
+        value = 929,
         min = NA,
         max = NA,
         step = NA,
         width = NULL
-      ),
-      numericInput(
+      ), style = "font-size:20px"),
+      tags$style('#f_cal {font-size:18px;}'),
+      span(numericInput(
         inputId = "f_cal",
-        label = "Calories of given fish (J/kg) ",
-        value = 46,
+        label = "Calories of given fish (kcal/fish) ",
+        value = 13409,
         min = NA,
         max = NA,
         step = NA,
         width = NULL
-      ),
+      ), style = "font-size:20px" ),
     ),
     
-    mainPanel(h2("Number of fish given inputs:"),
-              textOutput("result")
+    mainPanel(h3("Number of fish given inputs:"), #change back to h2 if not running
+              span(textOutput("result"),
+              style = "font-size:20px")
+              
     )
   )
 )
@@ -70,7 +76,7 @@ server <- function(input, output, session) {
   
   output$result <- renderText({
     as.character(
-      input$mass * input$f_cal * 6.42
+      (600*(input$mass^0.87))/(input$f_cal)
     )
   })
   
@@ -82,4 +88,3 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 
 ```
-
