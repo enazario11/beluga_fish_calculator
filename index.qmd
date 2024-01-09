@@ -1,12 +1,10 @@
 ---
-title: "index"
+title: "Home page for beluga fish calculator"
 format: html
 editor: visual
 theme: yeti
 fontcolor: "#134f5c"
 ---
-
-# Home page for beluga fish calculator 
 
 ## This calculator was developed to support the John et al., 2023 manuscript \[insert article link\]
 
