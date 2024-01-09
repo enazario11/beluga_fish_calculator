@@ -24,7 +24,7 @@ $$
 \texttt{Number of fish per day} = \frac{(651.2*\text{beluga mass}^{0.87})*0.239}{\text{fish energy value}*0.85}
 $$
 
-You can modify the above equation using this calculator to see how the number of fish needed per day changes as the mass of the whale and calories of the fish change. The default values observed here are the average mass of an adult female beluga and the average calories in a Chinook salmon as described by [@neill2014energy]. Adult female beluga whales typically weigh between 680-1179kg and males can typically be found between 1088-1587kg.
+You can modify the above equation using this calculator to see how the number of fish needed per day changes as the mass of the whale and calories of the fish change. The default values observed here are the average mass of the adult female beluga whales included in John et al., 2024 (this study) and the average calories in a Chinook salmon as described by [@neill2014energy]. Adult female beluga whales can typically weigh between 680-1179kg and males can typically be found between 1088-1587kg.
 
 ```{shinylive-r}
 #| standalone: true
@@ -46,7 +46,7 @@ ui <- fluidPage(
       span(numericInput(
         inputId = "mass",
         label = "Beluga mass (kg)",
-        value = 929,
+        value = 758,
         min = NA,
         max = NA,
         step = NA,
