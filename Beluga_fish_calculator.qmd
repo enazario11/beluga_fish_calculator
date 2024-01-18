@@ -1,6 +1,6 @@
 ---
 title: "Beluga fish calculator"
-author: "Emily Nazario"
+author: "Emily Nazario | UC Santa Cruz | enazario'@'ucsc.edu"
 filters:
   - shinylive
 theme: yeti
@@ -10,13 +10,13 @@ bibliography: references.bib
 
 On this page you will find a way to test out the number of fish a beluga whale of a given mass would need to sustain its field metabolic rate. You are also able to modify the calories of the fish according to your preferred species. We have provided a table here of the most common species and their caloric densities. These averages were described by [@neill2014energy] [which can be found here.](https://www.int-res.com/abstracts/esr/v25/n3/p265-281/)
 
-|  Fish species                             |  Energy value (kcal/fish)                        |
-|-------------------------------------------|--------------------------------------------------|
-| Chinook                                   | 13409                                            |
-| Sockeye                                   | 4264                                             |
-| Pink                                      | 2101                                             |
-| Coho                                      | 4982                                             |
-| Chum                                      | 4265                                             |
+| Fish species | Energy value (kcal/fish) |
+|--------------|--------------------------|
+| Chinook      | 13409                    |
+| Sockeye      | 4264                     |
+| Pink         | 2101                     |
+| Coho         | 4982                     |
+| Chum         | 4265                     |
 
 Here is the equation used in the fish calculator below to calculate the number of fish of a given caloric density a beluga whale of a given mass would need per day. The top bar of the fraction represents the kcal/day expended by a beluga whale of a given mass, and the bottom bar represents the caloric value per fish correcting for an 85% digestive efficiency of the whale (see main article text for more information).
 
